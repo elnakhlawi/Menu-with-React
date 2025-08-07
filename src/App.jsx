@@ -101,7 +101,7 @@ function Pizza({ pizaObj }) {
       <div>
         <h3>{pizaObj.name}</h3>
         <p>{pizaObj.ingredients}</p>
-        <span>{pizaObj.price + "$"}</span>
+        <span>{pizaObj.soldOut?"sold out":pizaObj.price + "$"}</span>
       </div>
     </li>
   );
