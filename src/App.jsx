@@ -50,7 +50,7 @@ function App() {
       <Header />
       <Menu />
       <Footer />
-      <MySignature/>
+      <MySignature />
     </div>
   );
 }
@@ -66,15 +66,26 @@ function Menu() {
   const hour = new Date().getHours();
   const openHour = 6;
   const closeHour = 24;
+const styles={marginBottom:'10px',marginTop:'-14px'}
   return (
     <main className="menu">
       <h2>The menu</h2>
       {pizzaData.length > 0 ? (
-        <ul className="ListOfPizaa">
-          {pizzaData.map((pizaa) => (
-            <Pizza pizaObj={pizaa}/>
-          ))}
-        </ul>
+        <>
+          {" "}
+          <p style={styles}>
+            Welcome to our pizza haven! Whether you're craving the classics or
+            looking for bold, mouthwatering flavors, our diverse pizza menu has
+            something for everyone. Each pizza is handcrafted with a crispy
+            golden crust, rich tomato sauce, premium mozzarella, and fresh,
+            high-quality ingredients.
+          </p>
+          <ul className="ListOfPizaa">
+            {pizzaData.map((pizaa) => (
+              <Pizza pizaObj={pizaa} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p className="pError">Sorry. We'er still working on our menu :)</p>
       )}
@@ -83,9 +94,9 @@ function Menu() {
   );
 }
 
-function Pizza({pizaObj}) {
+function Pizza({ pizaObj }) {
   return (
-    <li className="pizaa">
+    <li className={`pizaa ${pizaObj.soldOut?'soldOut':""} `}>
       <img src={pizaObj.photoName} alt="Focaccia" />
       <div>
         <h3>{pizaObj.name}</h3>
@@ -117,6 +128,5 @@ function Footer() {
     </footer>
   );
 }
-
 
 export default App;

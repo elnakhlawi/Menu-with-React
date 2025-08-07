@@ -146,3 +146,8 @@ header {
   font-size: 25px;
   margin: 40px;
 }
+
+.soldOut{
+  filter: grayscale(200);
+  -webkit-filter: grayscale(200);
+}
