@@ -40,7 +40,14 @@ header {
   width: 100%;
   display: block;
 }
+@media (max-width:600px) {
+  .header h1 {
+    font-size: 3.2rem;
+  }
 
+
+
+}
 .header h1::after,
 .header h1::before {
   display: block;
@@ -85,7 +92,14 @@ header {
   letter-spacing: 3px;
   font-weight: 500;
 }
-
+@media (max-width:600px) {
+    .menu h2{
+    position: relative;
+    right: 35px;
+      top: -17px;
+    
+  }
+}
 .pizaa {
   display: flex;
   gap: 3.4rem;
@@ -96,6 +110,15 @@ header {
   width: 12rem;
   aspect-ratio: 1;
   align-self: start;
+}
+
+@media (max-width:600px) {
+  .pizaa{
+    flex-direction: column;
+    gap: 0.4rem;
+    position: relative;
+  left: 60px;
+  }
 }
 
 .pizaa div {
@@ -137,6 +160,12 @@ header {
   -o-transition:0.5s ;
 }
 
+@media (max-width:600px) {
+  .praIngredients{
+    width: 133px;
+  }
+  
+}
 .btnOrder:hover{
   background-color: rgb(239, 239, 3);
 
