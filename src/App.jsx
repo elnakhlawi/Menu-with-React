@@ -1,3 +1,4 @@
+import MySignature from "./components/MySignature.jsx";
 const pizzaData = [
   {
     name: "Focaccia",
@@ -47,8 +48,9 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <Menu/>
-      <Footer/>
+      <Menu />
+      <Footer />
+      <MySignature/>
     </div>
   );
 }
@@ -61,38 +63,60 @@ function Header() {
   );
 }
 function Menu() {
+  const hour = new Date().getHours();
+  const openHour = 6;
+  const closeHour = 24;
   return (
     <main className="menu">
       <h2>The menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      {pizzaData.length > 0 ? (
+        <ul className="ListOfPizaa">
+          {pizzaData.map((pizaa) => (
+            <Pizza pizaObj={pizaa}/>
+          ))}
+        </ul>
+      ) : (
+        <p className="pError">Sorry. We'er still working on our menu :)</p>
+      )}
+      {hour > openHour && hour < closeHour && <Button />}
     </main>
   );
 }
+
+function Pizza({pizaObj}) {
+  return (
+    <li className="pizaa">
+      <img src={pizaObj.photoName} alt="Focaccia" />
+      <div>
+        <h3>{pizaObj.name}</h3>
+        <p>{pizaObj.ingredients}</p>
+        <span>{pizaObj.price + "$"}</span>
+      </div>
+    </li>
+  );
+}
+function Button() {
+  return (
+    <div>
+      <button className="btnOrder"> Order</button>
+    </div>
+  );
+}
 function Footer() {
-  const hour=new Date().getHours();
-  const openHour=6;
-  const closeHour=24;
+  const hour = new Date().getHours();
+  const openHour = 6;
+  const closeHour = 24;
   return (
     <footer>
       <h1>
-      
-         { new Date().toLocaleTimeString()} <br />
-          {hour>=openHour&& hour<closeHour?' Pizza  Elnakhlwy is open now!':'Sorry we are not open'}
-      </h1>  
+        {new Date().toLocaleTimeString()} <br />
+        {hour >= openHour && hour < closeHour
+          ? " Pizza  Elnakhlwy is open now!"
+          : "Sorry we are not open"}
+      </h1>
     </footer>
   );
 }
 
-function Pizza() {
-  return (
-    <>
-      <img src="pizzas/focaccia.jpg" alt="Focaccia" />
-      <h3>Focaccia</h3>
-      <p>Bread with italian olive oil and rosemary</p>
-    </>
-  );
-}
+
 export default App;
