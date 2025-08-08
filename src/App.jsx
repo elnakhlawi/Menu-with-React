@@ -80,7 +80,7 @@ const styles={marginBottom:'10px',marginTop:'-14px'}
             golden crust, rich tomato sauce, premium mozzarella, and fresh,
             high-quality ingredients.
           </p>
-          <ul className="ListOfPizaa">
+          <ul className="ListOfPizaa"  >
             {pizzaData.map((pizaa) => (
               <Pizza pizaObj={pizaa} />
             ))}
@@ -96,7 +96,7 @@ const styles={marginBottom:'10px',marginTop:'-14px'}
 
 function Pizza({ pizaObj }) {
   return (
-    <li className={`pizaa ${pizaObj.soldOut?'soldOut':""} `}>
+    <li className={`pizaa ${pizaObj.soldOut?'soldOut':""} `} key={pizaObj.name}>
       <img src={pizaObj.photoName} alt="Focaccia" />
       <div>
         <h3>{pizaObj.name}</h3>
